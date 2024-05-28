@@ -23,3 +23,8 @@ Fornecer uma API Rest para um sistema de gerenciamento de pedidos para uma empre
 
 ## Instalação do projeto
 
+Este projeto está preparado para ser executado em um ambiente Docker. Portanto, apenas a instalação do Docker será necessária, eliminando a necessidade de instalar manualmente o projeto ou o banco de dados (MariaDB).
+
+Se ainda não tiver o Docker instalado, siga as instruções específicas para o seu sistema operacional na documentação oficial do Docker.
+
+Para "construir" (build) o projeto, utilize o comando docker compose up.
