@@ -32,26 +32,24 @@ Para "construir" (build) o projeto, utilize o comando docker compose up.
 ### estrutura do projeto
 
 ```shell
-.
 └── src
     ├── adapter
-    │   ├── driven
-    │   │   └── infra
-    │   │       ├── config
-    │   │       │   └── interfaces
-    │   │       ├── models
-    │   │       ├── repository
-    │   │       └── seeders
-    │   └── driver
-    │       └── api
-    │           ├── config
-    │           │   └── interfaces
-    │           ├── controllers
-    │           └── routers
-    ├── core
-    │   ├── applications
-    │   │   ├── repositories
-    │   │   └── services
-    │   └── domain
-    │       └── valueObjects
+    │   ├── inbound
+    │   │   └── controller
+    │   │       ├── request
+    │   │       ├── response
+    │   ├── outbound
+    │   │   └── repository
+    │   │       ├── entity
+    │   │       ├── mapper
+    │   │   └── security
+    │   └── application
+    │       └── domain
+    │       └── exception
+    │       └── port
+    │   │       ├── inbound
+    │   │       ├── outbound
+    │       └── usecase
+    │       └── util
+    ├── config
 ```
