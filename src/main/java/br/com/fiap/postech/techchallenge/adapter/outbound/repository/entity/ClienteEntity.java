@@ -20,6 +20,8 @@ public class ClienteEntity {
 
     private String email;
 
+    private Boolean anonimo;
+
     public Long getId() {
         return id;
     }
@@ -50,5 +52,13 @@ public class ClienteEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getAnonimo() {
+        return anonimo;
+    }
+
+    public void setAnonimo(Boolean anonimo) {
+        this.anonimo = anonimo;
     }
 }

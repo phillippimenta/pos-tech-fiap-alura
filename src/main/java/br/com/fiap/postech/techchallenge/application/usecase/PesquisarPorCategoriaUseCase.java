@@ -1,6 +1,6 @@
 package br.com.fiap.postech.techchallenge.application.usecase;
 
-import br.com.fiap.postech.techchallenge.application.domain.CategoriaEnum;
+import br.com.fiap.postech.techchallenge.application.domain.TipoProduto;
 import br.com.fiap.postech.techchallenge.application.domain.Produto;
 import br.com.fiap.postech.techchallenge.application.port.inbound.PesquisarPorCategoriaUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.outbound.ProdutoRepositoryAdapterPort;
@@ -16,7 +16,7 @@ public class PesquisarPorCategoriaUseCase implements PesquisarPorCategoriaUseCas
     }
 
     @Override
-    public List<Produto> executar(CategoriaEnum categoria) {
-        return this.produtoRepositoryAdapterPort.pesquisarPorCategoria(categoria);
+    public List<Produto> executar(TipoProduto categoria) {
+        return this.produtoRepositoryAdapterPort.pesquisarPorTipoProduto(categoria);
     }
 }

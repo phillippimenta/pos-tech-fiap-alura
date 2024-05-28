@@ -14,7 +14,7 @@ public class ProdutoEntityMapper {
         if (entity == null) return null;
         Produto produto = new Produto();
         produto.setId(entity.getId());
-        produto.setCategoria(entity.getCategoria());
+        produto.setTipoProduto(entity.getTipoProduto());
         produto.setNome(entity.getNome());
         produto.setDescricao(entity.getDescricao());
         produto.setPreco(entity.getPreco());
@@ -29,7 +29,7 @@ public class ProdutoEntityMapper {
     public ProdutoEntity toProdutoEntity(Produto produto) {
         if (produto == null) return null;
         ProdutoEntity produtoEntity = new ProdutoEntity();
-        produtoEntity.setCategoria(produto.getCategoria());
+        produtoEntity.setTipoProduto(produto.getTipoProduto());
         produtoEntity.setId(produto.getId());
         produtoEntity.setNome(produto.getNome());
         produtoEntity.setDescricao(produto.getDescricao());

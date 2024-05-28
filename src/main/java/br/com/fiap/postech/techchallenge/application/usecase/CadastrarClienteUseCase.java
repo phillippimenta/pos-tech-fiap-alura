@@ -20,6 +20,7 @@ public class CadastrarClienteUseCase implements CadastrarClienteUseCasePort {
             String mensagem = String.format("Cliente com CPF %s já cadastrado.", cliente.getCpf().getNumero());
             throw new DominioException(mensagem);
         }
+        cliente.setAnonimo(Boolean.FALSE);
         return this.clienteRepositoryAdapterPort.salvar(cliente);
     }
 }

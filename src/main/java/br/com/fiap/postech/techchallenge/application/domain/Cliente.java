@@ -2,6 +2,8 @@ package br.com.fiap.postech.techchallenge.application.domain;
 
 public class Cliente {
 
+    public static final String NOME_ANONIMO = "ANONIMO";
+
     private Long id;
 
     private CPF cpf;
@@ -9,6 +11,8 @@ public class Cliente {
     private String nome;
 
     private Email email;
+
+    private Boolean anonimo;
 
     public Long getId() {
         return id;
@@ -40,5 +44,13 @@ public class Cliente {
 
     public void setEmail(Email email) {
         this.email = email;
+    }
+
+    public Boolean getAnonimo() {
+        return anonimo;
+    }
+
+    public void setAnonimo(Boolean anonimo) {
+        this.anonimo = anonimo;
     }
 }

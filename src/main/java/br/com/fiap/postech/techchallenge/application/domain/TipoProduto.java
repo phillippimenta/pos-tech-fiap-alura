@@ -1,6 +1,6 @@
 package br.com.fiap.postech.techchallenge.application.domain;
 
-public enum CategoriaEnum {
+public enum TipoProduto {
 
     LANCHES,
     ACOMPANHAMENTOS,

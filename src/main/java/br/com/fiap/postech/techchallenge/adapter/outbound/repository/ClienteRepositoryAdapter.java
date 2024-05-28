@@ -23,8 +23,14 @@ public class ClienteRepositoryAdapter implements ClienteRepositoryAdapterPort {
     }
 
     @Override
+    public Cliente obterPorId(Long id) {
+        ClienteEntity clienteEntity = this.clienteJpaRepository.obterPorId(id);
+        return this.clienteEntityMapper.toCliente(clienteEntity);
+    }
+
+    @Override
     public Cliente obterPorCPF(CPF cpf) {
-        ClienteEntity clienteEntity = this.clienteJpaRepository.findByCpf(cpf.getNumero());
+        ClienteEntity clienteEntity = this.clienteJpaRepository.obterPorCpf(cpf.getNumero());
         return this.clienteEntityMapper.toCliente(clienteEntity);
     }
 

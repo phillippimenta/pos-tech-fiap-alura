@@ -6,13 +6,13 @@ public class Produto {
 
     private Long id;
 
-    private CategoriaEnum categoria;
+    private TipoProduto tipoProduto;
 
     private String nome;
 
     private String descricao;
 
-    private BigDecimal preco;
+    private BigDecimal preco = BigDecimal.ZERO;
 
     public void atualizarCom(Produto produtoAtualizado) {
         this.nome = produtoAtualizado.getNome();
@@ -28,12 +28,12 @@ public class Produto {
         this.id = id;
     }
 
-    public CategoriaEnum getCategoria() {
-        return categoria;
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
     }
 
-    public void setCategoria(CategoriaEnum categoria) {
-        this.categoria = categoria;
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
     }
 
     public String getNome() {

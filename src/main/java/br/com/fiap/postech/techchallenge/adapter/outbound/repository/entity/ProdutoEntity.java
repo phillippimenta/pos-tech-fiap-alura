@@ -1,6 +1,6 @@
 package br.com.fiap.postech.techchallenge.adapter.outbound.repository.entity;
 
-import br.com.fiap.postech.techchallenge.application.domain.CategoriaEnum;
+import br.com.fiap.postech.techchallenge.application.domain.TipoProduto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,7 +21,8 @@ public class ProdutoEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private CategoriaEnum categoria;
+    @Column(name = "tipo_produto")
+    private TipoProduto tipoProduto;
 
     @Column(unique = true, nullable = false)
     private String nome;
@@ -46,12 +47,12 @@ public class ProdutoEntity {
         this.id = id;
     }
 
-    public CategoriaEnum getCategoria() {
-        return categoria;
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
     }
 
-    public void setCategoria(CategoriaEnum categoria) {
-        this.categoria = categoria;
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
     }
 
     public String getNome() {

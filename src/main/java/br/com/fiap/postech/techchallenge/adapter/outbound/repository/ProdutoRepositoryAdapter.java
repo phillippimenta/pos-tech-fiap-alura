@@ -2,7 +2,7 @@ package br.com.fiap.postech.techchallenge.adapter.outbound.repository;
 
 import br.com.fiap.postech.techchallenge.adapter.outbound.repository.entity.ProdutoEntity;
 import br.com.fiap.postech.techchallenge.adapter.outbound.repository.mapper.ProdutoEntityMapper;
-import br.com.fiap.postech.techchallenge.application.domain.CategoriaEnum;
+import br.com.fiap.postech.techchallenge.application.domain.TipoProduto;
 import br.com.fiap.postech.techchallenge.application.domain.Produto;
 import br.com.fiap.postech.techchallenge.application.port.outbound.ProdutoRepositoryAdapterPort;
 import org.springframework.stereotype.Repository;
@@ -22,8 +22,8 @@ public class ProdutoRepositoryAdapter implements ProdutoRepositoryAdapterPort {
     }
 
     @Override
-    public List<Produto> pesquisarPorCategoria(CategoriaEnum categoria) {
-        return this.mapper.toProdutoList(this.produtoJpaRepository.findByCategoria(categoria));
+    public List<Produto> pesquisarPorTipoProduto(TipoProduto tipoProduto) {
+        return this.mapper.toProdutoList(this.produtoJpaRepository.findByTipoProduto(tipoProduto));
     }
 
     @Override

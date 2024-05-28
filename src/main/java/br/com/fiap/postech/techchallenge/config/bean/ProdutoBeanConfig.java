@@ -1,19 +1,19 @@
-package br.com.fiap.postech.techchallenge.config;
+package br.com.fiap.postech.techchallenge.config.bean;
 
-import br.com.fiap.postech.techchallenge.application.port.inbound.*;
-import br.com.fiap.postech.techchallenge.application.port.outbound.ClienteRepositoryAdapterPort;
+import br.com.fiap.postech.techchallenge.application.port.inbound.AtualizarProdutoUseCasePort;
+import br.com.fiap.postech.techchallenge.application.port.inbound.CriarProdutoUseCasePort;
+import br.com.fiap.postech.techchallenge.application.port.inbound.PesquisarPorCategoriaUseCasePort;
+import br.com.fiap.postech.techchallenge.application.port.inbound.RemoverProdutoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.outbound.ProdutoRepositoryAdapterPort;
-import br.com.fiap.postech.techchallenge.application.usecase.*;
+import br.com.fiap.postech.techchallenge.application.usecase.AtualizarProdutoUseCase;
+import br.com.fiap.postech.techchallenge.application.usecase.CriarProdutoUseCase;
+import br.com.fiap.postech.techchallenge.application.usecase.PesquisarPorCategoriaUseCase;
+import br.com.fiap.postech.techchallenge.application.usecase.RemoverProdutoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class BeanConfig {
-
-    @Bean
-    public CadastrarClienteUseCasePort cadastrarClienteUseCase(ClienteRepositoryAdapterPort clienteRepositoryAdapterPort) {
-        return new CadastrarClienteUseCase(clienteRepositoryAdapterPort);
-    }
+public class ProdutoBeanConfig {
 
     @Bean
     public PesquisarPorCategoriaUseCasePort pesquisarPorCategoriaUseCase(ProdutoRepositoryAdapterPort produtoRepositoryAdapterPort) {

@@ -17,12 +17,13 @@ public class ClienteEntityMapper {
         Cliente cliente = new Cliente();
         cliente.setId(entity.getId());
         cliente.setNome(entity.getNome());
-        cliente.setCpf(new CPF(entity.getCpf()));
-        cliente.setEmail(new Email(entity.getEmail()));
+        cliente.setCpf(entity.getCpf() == null ? null : new CPF(entity.getCpf()));
+        cliente.setEmail(entity.getEmail() == null ? null : new Email(entity.getEmail()));
+        cliente.setAnonimo(entity.getAnonimo());
         return cliente;
     }
 
-    public List<Cliente> toProdutoList(List<ClienteEntity> entityList) {
+    public List<Cliente> toClienteList(List<ClienteEntity> entityList) {
         if (entityList == null) return List.of();
         return entityList.stream().map(this::toCliente).collect(Collectors.toList());
     }
@@ -32,8 +33,9 @@ public class ClienteEntityMapper {
         ClienteEntity clienteEntity = new ClienteEntity();
         clienteEntity.setId(cliente.getId());
         clienteEntity.setNome(cliente.getNome());
-        clienteEntity.setCpf(cliente.getCpf().getNumero());
-        clienteEntity.setEmail(cliente.getEmail().getEndereco());
+        clienteEntity.setCpf(cliente.getCpf() == null ? null : cliente.getCpf().getNumero());
+        clienteEntity.setEmail(cliente.getEmail() == null ? null : cliente.getEmail().getEndereco());
+        clienteEntity.setAnonimo(cliente.getAnonimo());
         return clienteEntity;
     }
 
