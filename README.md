@@ -28,3 +28,30 @@ Este projeto está preparado para ser executado em um ambiente Docker. Portanto,
 Se ainda não tiver o Docker instalado, siga as instruções específicas para o seu sistema operacional na documentação oficial do Docker.
 
 Para "construir" (build) o projeto, utilize o comando docker compose up.
+
+### estrutura do projeto
+
+```shell
+.
+└── src
+    ├── adapter
+    │   ├── driven
+    │   │   └── infra
+    │   │       ├── config
+    │   │       │   └── interfaces
+    │   │       ├── models
+    │   │       ├── repository
+    │   │       └── seeders
+    │   └── driver
+    │       └── api
+    │           ├── config
+    │           │   └── interfaces
+    │           ├── controllers
+    │           └── routers
+    ├── core
+    │   ├── applications
+    │   │   ├── repositories
+    │   │   └── services
+    │   └── domain
+    │       └── valueObjects
+```
