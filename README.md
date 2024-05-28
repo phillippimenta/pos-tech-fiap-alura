@@ -12,8 +12,14 @@ Fornecer uma API Rest para um sistema de gerenciamento de pedidos para uma empre
 ## Stack utilizada
 
 * Java 17 
-* MySQL
+* MariaDB
+* Flyway
+* Jakarta Bean Validation
+* Springdoc-openapi
 * Spring Boot
 * Spring Security
 * Spring Data JPA
 * Docker
+
+## Instalação do projeto
+
