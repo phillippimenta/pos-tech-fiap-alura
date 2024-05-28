@@ -1,11 +1,13 @@
 package br.com.fiap.postech.techchallenge.adapter.outbound.repository;
 
 import br.com.fiap.postech.techchallenge.adapter.outbound.repository.entity.PedidoEntity;
-import br.com.fiap.postech.techchallenge.adapter.outbound.repository.mapper.ClienteEntityMapper;
 import br.com.fiap.postech.techchallenge.adapter.outbound.repository.mapper.PedidoEntityMapper;
 import br.com.fiap.postech.techchallenge.application.domain.Pedido;
 import br.com.fiap.postech.techchallenge.application.port.outbound.PedidoRepositoryAdapterPort;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class PedidoRepositoryAdapter implements PedidoRepositoryAdapterPort {
@@ -14,12 +16,14 @@ public class PedidoRepositoryAdapter implements PedidoRepositoryAdapterPort {
 
     private final PedidoEntityMapper pedidoEntityMapper;
 
-    private final ClienteEntityMapper clienteEntityMapper;
-
-    public PedidoRepositoryAdapter(PedidoJpaRepository pedidoJpaRepository, PedidoEntityMapper pedidoEntityMapper, ClienteEntityMapper clienteEntityMapper) {
+    public PedidoRepositoryAdapter(PedidoJpaRepository pedidoJpaRepository, PedidoEntityMapper pedidoEntityMapper) {
         this.pedidoJpaRepository = pedidoJpaRepository;
         this.pedidoEntityMapper = pedidoEntityMapper;
-        this.clienteEntityMapper = clienteEntityMapper;
+    }
+
+    @Override
+    public List<Pedido> pesquisarPorDataCriacao(LocalDate dataCriacao) {
+        return this.pedidoEntityMapper.toPedidoList(this.pedidoJpaRepository.pesquisarPorDataCriacao(dataCriacao));
     }
 
     @Override

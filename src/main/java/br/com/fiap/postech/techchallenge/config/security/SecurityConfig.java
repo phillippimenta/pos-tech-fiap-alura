@@ -34,9 +34,8 @@ public class SecurityConfig {
                                     .permitAll();
                             req.requestMatchers("/clientes",
                                     "/clientes/autenticar/*").permitAll();
-                            req.requestMatchers("/pedidos/*/preparar").permitAll();
-                            req.requestMatchers("/pedidos/*/pronto").permitAll();
-                            req.requestMatchers("/pedidos/*/entregar").permitAll();
+                            req.requestMatchers("/pedidos", "/pedidos/*/preparar",
+                                    "/pedidos/*/pronto", "/pedidos/*/entregar").permitAll();
                             req.anyRequest().authenticated();
                         })
                         .build();

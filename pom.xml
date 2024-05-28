@@ -14,7 +14,7 @@
 	<name>techchallenge</name>
 	<description>API do Projeto Tech Challenge da Pós Tech da FIAP</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

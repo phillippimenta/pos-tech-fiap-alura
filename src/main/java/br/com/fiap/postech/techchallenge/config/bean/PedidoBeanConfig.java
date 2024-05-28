@@ -3,6 +3,7 @@ package br.com.fiap.postech.techchallenge.config.bean;
 import br.com.fiap.postech.techchallenge.application.port.inbound.CriarPedidoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.inbound.EntregarPedidoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.inbound.FinalizarPreparacaoPedidoUseCasePort;
+import br.com.fiap.postech.techchallenge.application.port.inbound.ListarPedidosPorDataCriacaoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.inbound.PagarPedidoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.inbound.PrepararPedidoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.outbound.PedidoRepositoryAdapterPort;
@@ -11,6 +12,7 @@ import br.com.fiap.postech.techchallenge.application.port.outbound.SecurityConte
 import br.com.fiap.postech.techchallenge.application.usecase.CriarPedidoUseCase;
 import br.com.fiap.postech.techchallenge.application.usecase.EntregarPedidoUseCase;
 import br.com.fiap.postech.techchallenge.application.usecase.FinalizarPreparacaoPedidoUseCase;
+import br.com.fiap.postech.techchallenge.application.usecase.ListarPedidosPorDataCriacaoUseCase;
 import br.com.fiap.postech.techchallenge.application.usecase.PagarPedidoUseCase;
 import br.com.fiap.postech.techchallenge.application.usecase.PrepararPedidoUseCase;
 import org.springframework.context.annotation.Bean;
@@ -59,5 +61,10 @@ public class PedidoBeanConfig {
             PedidoRepositoryAdapterPort pedidoRepositoryAdapterPort
     ) {
         return new EntregarPedidoUseCase(pedidoRepositoryAdapterPort);
+    }
+
+    @Bean
+    public ListarPedidosPorDataCriacaoUseCasePort listarPedidoPorDataCriacaoUseCasePort(PedidoRepositoryAdapterPort pedidoRepositoryAdapterPort) {
+        return new ListarPedidosPorDataCriacaoUseCase(pedidoRepositoryAdapterPort);
     }
 }

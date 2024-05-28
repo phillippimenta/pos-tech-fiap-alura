@@ -6,6 +6,7 @@ import br.com.fiap.postech.techchallenge.application.domain.Pedido;
 import br.com.fiap.postech.techchallenge.application.port.inbound.CriarPedidoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.inbound.EntregarPedidoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.inbound.FinalizarPreparacaoPedidoUseCasePort;
+import br.com.fiap.postech.techchallenge.application.port.inbound.ListarPedidosPorDataCriacaoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.inbound.PagarPedidoUseCasePort;
 import br.com.fiap.postech.techchallenge.application.port.inbound.PrepararPedidoUseCasePort;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -13,12 +14,17 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pedidos")
@@ -34,18 +40,32 @@ public class PedidoController {
 
     private final EntregarPedidoUseCasePort entregarPedidoUseCasePort;
 
+    private final ListarPedidosPorDataCriacaoUseCasePort listarPedidosPorDataCriacaoUseCasePort;
+
     public PedidoController(
             CriarPedidoUseCasePort criarPedidoUseCasePort,
             PagarPedidoUseCasePort pagarPedidoUseCasePort,
             PrepararPedidoUseCasePort prepararPedidoUseCasePort,
             FinalizarPreparacaoPedidoUseCasePort finalizarPreparacaoPedidoUseCasePort,
-            EntregarPedidoUseCasePort entregarPedidoUseCasePort
+            EntregarPedidoUseCasePort entregarPedidoUseCasePort,
+            ListarPedidosPorDataCriacaoUseCasePort listarPedidosPorDataCriacaoUseCasePort
     ) {
         this.criarPedidoUseCasePort = criarPedidoUseCasePort;
         this.pagarPedidoUseCasePort = pagarPedidoUseCasePort;
         this.prepararPedidoUseCasePort = prepararPedidoUseCasePort;
         this.finalizarPreparacaoPedidoUseCasePort = finalizarPreparacaoPedidoUseCasePort;
         this.entregarPedidoUseCasePort = entregarPedidoUseCasePort;
+        this.listarPedidosPorDataCriacaoUseCasePort = listarPedidosPorDataCriacaoUseCasePort;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PedidoResponse>> listarPedidosPorDataCriacao(@RequestParam(required = false) LocalDate dataCriacao) {
+        if (dataCriacao == null) {
+            dataCriacao = LocalDate.now();
+        }
+        List<Pedido> pedidos = this.listarPedidosPorDataCriacaoUseCasePort.executar(dataCriacao);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(PedidoResponse.fromPedidoResponseList(pedidos));
     }
 
     @Transactional

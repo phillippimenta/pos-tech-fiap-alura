@@ -12,9 +12,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,14 @@ public class PedidoEntity {
 
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
+
+    @Column(name = "data_hora_criacao", insertable = true, updatable = false)
+    private LocalDateTime dataHoraCriacao;
+
+    @PrePersist
+    public void prePersist() {
+        this.dataHoraCriacao = LocalDateTime.now();
+    }
 
     public Long getId() {
         return id;

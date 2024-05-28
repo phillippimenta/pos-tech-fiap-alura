@@ -1,15 +1,16 @@
 version: '3.8'
+
 services:
-  mysql:
-    image: mysql:8.0.36
+  mariadb:
+    image: mariadb:10.11
     ports:
       - "3306:3306"
-    env_file: ./env/mysql.env
+    env_file: env/mariadb.env
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mariadb-data:/var/lib/mysql
     restart: unless-stopped
     healthcheck:
-      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      test: mysqladmin ping -h 127.0.0.1 -u $$MARIADB_USER --password=$$MARIADB_PASSWORD
       interval: 5s
       timeout: 5s
       retries: 10
@@ -20,10 +21,10 @@ services:
     env_file: ./env/app.env
     restart: unless-stopped
     depends_on:
-      mysql:
+      mariadb:
         condition: service_healthy
     ports:
       - "8080:8080"
 
 volumes:
-  mysql-data:
+  mariadb-data:
