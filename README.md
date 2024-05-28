@@ -29,7 +29,7 @@ Se ainda não tiver o Docker instalado, siga as instruções específicas para o
 
 Para "construir" (build) o projeto, utilize o comando docker compose up.
 
-### estrutura do projeto
+### Estrutura do projeto
 
 ```shell
 └── src
