@@ -29,6 +29,10 @@ Se ainda não tiver o Docker instalado, siga as instruções específicas para o
 
 Para "construir" (build) o projeto, utilize o comando docker compose up.
 
+### Event storming
+
+[](https://miro.com/app/board/uXjVKMjQsV4=/?share_link_id=46391713902)
+
 ### Estrutura do projeto
 
 ```shell
