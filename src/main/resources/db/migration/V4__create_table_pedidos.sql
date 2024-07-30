@@ -8,7 +8,7 @@ CREATE TABLE pedidos
     FOREIGN KEY (cliente_id) REFERENCES clientes (id) ON DELETE RESTRICT
 );
 
-CREATE TABLE produtos_pedidos
+CREATE TABLE pedidos_produtos
 (
     id                BIGINT AUTO_INCREMENT PRIMARY KEY,
     pedido_id         BIGINT         NOT NULL,
