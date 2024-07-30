@@ -5,5 +5,5 @@ import br.com.fiap.postech.techchallenge.domain.enums.StatusPedido;
 
 public interface AlterarStatusPedidoUseCasePort {
 
-    Pedido executar(StatusPedido novoStatus, Long pedidoId);
+    Pedido executar(Long pedidoId, StatusPedido novoStatus);
 }

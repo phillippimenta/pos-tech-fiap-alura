@@ -2,6 +2,7 @@ package br.com.fiap.postech.techchallenge.frameworks.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,6 +35,8 @@ public class SecurityConfig {
                                     .permitAll();
                             req.requestMatchers("/produtos/**").permitAll();
                             req.requestMatchers("/clientes/**").permitAll();
+                            req.requestMatchers(HttpMethod.GET, "/pedidos").permitAll();
+                            req.requestMatchers(HttpMethod.PATCH, "/pedidos/*/status/*").permitAll();
                             req.anyRequest().authenticated();
                         })
                         .build();

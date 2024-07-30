@@ -19,7 +19,7 @@ public class JsonWebToken implements JsonWebTokenPort {
 
     public static final String API_PROJETO_TECH_CHALLENGE = "API Projeto Tech Challenge";
 
-    @Value("${jwt.secret}")
+    @Value("${app.jwt.secret}")
     private String secret;
 
     @Override

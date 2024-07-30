@@ -1,6 +1,7 @@
 package br.com.fiap.postech.techchallenge.domain.entities;
 
 import br.com.fiap.postech.techchallenge.domain.enums.StatusPedido;
+import br.com.fiap.postech.techchallenge.domain.exception.DominioException;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,6 +21,26 @@ public class Pedido {
     private List<PedidoProduto> produtos = new ArrayList<>();
 
     private StatusPedido status;
+
+    public void alterarStatus(StatusPedido novoStatus) {
+        if (podeAlterarPara(novoStatus)) {
+            this.status = novoStatus;
+        } else {
+            throw new DominioException(String.format("Não é possível alterar o pedido para o status %s.", novoStatus));
+        }
+    }
+
+    private boolean podeAlterarPara(StatusPedido novoStatus) {
+        if (this.status == null) {
+            return novoStatus == StatusPedido.RECEBIDO;
+        }
+        return switch (this.status) {
+            case RECEBIDO -> novoStatus == StatusPedido.EM_PREPARACAO;
+            case EM_PREPARACAO -> novoStatus == StatusPedido.PRONTO;
+            case PRONTO -> novoStatus == StatusPedido.FINALIZADO;
+            case FINALIZADO -> false;
+        };
+    }
 
     public Long getId() {
         return id;
