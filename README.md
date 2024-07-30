@@ -10,11 +10,5 @@ phillip eduardo pimenta forte - phillippimenta@gmail.com
 
 ## Link do vídeo no Youtube:
 
-## Diagrama de arquitetura
-![](https://github.com/phillippimenta/pos-tech-fiap-alura/blob/main/documentacao/imagens/architecture-diagram.png)
-
-## Diagrama de camadas
-![](https://github.com/phillippimenta/pos-tech-fiap-alura/blob/main/documentacao/imagens/layer-diagram.png)
-
-## Diagrama de pacotes
-![](https://github.com/phillippimenta/pos-tech-fiap-alura/blob/main/documentacao/imagens/package-diagram.png)
+## Diagrama arquiteturais
+![](https://github.com/phillippimenta/pos-tech-fiap-alura/blob/main/documentacao/imagens/group-88-fiap-7soat-techchallenge-diagrams.png)
