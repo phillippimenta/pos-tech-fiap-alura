@@ -36,7 +36,7 @@ public class CadastrarPedidoUseCase implements CadastrarPedidoUseCasePort {
             pedido.setPrecoTotal(pedido.getPrecoTotal().add(produtoPedido.getPrecoTotal()));
         }
         pedido.setCliente(this.securityContextPort.obterClienteAutenticado());
-        pedido.setStatus(StatusPedido.RECEBIDO);
+        pedido.alterarStatus(StatusPedido.RECEBIDO);
         return pedidoRepositoryPort.salvar(pedido);
     }
 }

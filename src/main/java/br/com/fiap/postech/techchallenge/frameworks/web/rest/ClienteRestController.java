@@ -6,6 +6,8 @@ import br.com.fiap.postech.techchallenge.adapters.controllers.request.ClienteReq
 import br.com.fiap.postech.techchallenge.adapters.controllers.response.ClienteResponse;
 import br.com.fiap.postech.techchallenge.domain.entities.DadosTokenJWT;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -33,7 +35,14 @@ public class ClienteRestController {
 
     @Operation(summary = "Permite pesquisar clientes com a opção de filtrar por CPF.")
     @GetMapping
-    public ResponseEntity<List<ClienteResponse>> listarClientes(@RequestParam(required = false) String cpf) {
+    public ResponseEntity<List<ClienteResponse>> listarClientes(
+            @Parameter(
+                    description = "CPF no formato, com ou sem pontuação e traço.",
+                    schema = @Schema(type = "string", format = "date")
+            )
+            @RequestParam(required = false)
+            String cpf
+    ) {
         return ResponseEntity.status(HttpStatus.OK).body(this.clienteController.listarClientesComFiltroPorCPF(cpf));
     }
 

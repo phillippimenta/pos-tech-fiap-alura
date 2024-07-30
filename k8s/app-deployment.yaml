@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techchallenge-app
+  labels:
+    app: techchallenge-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techchallenge-app
+  template:
+    metadata:
+      labels:
+        app: techchallenge-app
+    spec:
+      containers:
+        - name: techchallenge-app
+          image: phillippimenta/techchallenge-app:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mariadb://base-mariadb:3306/techchallenge?createDatabaseIfNotExist=true"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "techchallenge"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "techchallenge_pwd"
+            - name: APP_JWT_SECRET
+              value: "@cJ+OG!_GcYCz'_S(WP-wJ2#)i.nb4R!xMOeDMN-9)XTuwQ%Gk"

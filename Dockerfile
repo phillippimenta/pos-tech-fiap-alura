@@ -1,32 +1,35 @@
-# Use a imagem oficial do Maven como imagem base
-FROM maven:3.8.4-openjdk-17 AS builder
+# Use uma imagem base leve do OpenJDK 17 com Alpine
+FROM eclipse-temurin:17-jdk-alpine AS builder
 
-# Define o diretório de trabalho no contêiner
+# Instale o Maven
+RUN apk add --no-cache maven
+
+# Defina o diretório de trabalho
 WORKDIR /app
 
-# Copia o arquivo do projeto Maven
+# Copie o arquivo de configuração do Maven
 COPY pom.xml .
 
-# Baixa todas as dependências do Maven (as dependências serão armazenadas em cache se o pom.xml não tiver mudado)
+# Baixe as dependências do Maven
 RUN mvn dependency:go-offline -B
 
-# Copia o código-fonte para o contêiner
+# Copie o código-fonte
 COPY src ./src
 
-# Empacota a aplicação
+# Empacote a aplicação
 RUN mvn package -DskipTests
 
-# Inicia uma nova etapa a partir da imagem base openjdk
-FROM openjdk:17-jdk-alpine
+# Use uma imagem base mínima do OpenJDK para a fase de execução
+FROM eclipse-temurin:17-jre-alpine
 
-# Define o diretório de trabalho no contêiner
+# Defina o diretório de trabalho
 WORKDIR /app
 
-# Copia o arquivo JAR empacotado da etapa de construção para o diretório atual
+# Copie o JAR empacotado da fase de construção
 COPY --from=builder /app/target/*.jar ./app.jar
 
-# Expõe a porta em que a aplicação será executada
+# Exponha a porta
 EXPOSE 8080
 
-# Especifica o comando a ser executado ao iniciar o contêiner
+# Comando para iniciar a aplicação
 CMD ["java", "-jar", "app.jar"]

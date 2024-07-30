@@ -17,6 +17,6 @@ public class ListarPedidosPorDataCriacaoUseCase implements ListarPedidosPorDataC
 
     @Override
     public List<Pedido> executar(LocalDate dataCriacao) {
-        return List.of();
+        return pedidoRepositoryPort.pesquisarPorDataCriacao(dataCriacao);
     }
 }

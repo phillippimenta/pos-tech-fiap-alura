@@ -14,7 +14,9 @@ public class AlterarStatusPedidoUseCase implements AlterarStatusPedidoUseCasePor
     }
 
     @Override
-    public Pedido executar(StatusPedido novoStatus, Long pedidoId) {
-        return null;
+    public Pedido executar(Long pedidoId, StatusPedido novoStatus) {
+        Pedido pedido = pedidoRepositoryPort.obterPorId(pedidoId);
+        pedido.alterarStatus(novoStatus);
+        return this.pedidoRepositoryPort.salvar(pedido);
     }
 }

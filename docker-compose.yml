@@ -19,13 +19,11 @@ services:
       - MYSQL_PASSWORD=techchallenge_pwd
     ports:
       - 3366:3306
-
   app:
     container_name: techchallenge-app
     build:
       context: .
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
       - SPRING_DATASOURCE_URL=jdbc:mariadb://db:3306/techchallenge?createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME=techchallenge
       - SPRING_DATASOURCE_PASSWORD=techchallenge_pwd
